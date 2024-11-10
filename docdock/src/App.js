@@ -1,14 +1,24 @@
 import "./App.css";
-import Chat from "./Components/chat";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Components/Home";
+import Chat from "./Components/Chat";
+import Prescription from "./Components/Prescription";
+import Contact from "./Components/Contact";
+import Checkout from "./Components/Checkout";
+import Payment from "./Components/Payment";
 
-import Prescription from "./Components/prescription";
+const router = createBrowserRouter([
+  { path: "/", element: <Home></Home> },
+  { path: "/prescription", element: <Prescription></Prescription> },
+  { path: "/chat", element: <Chat></Chat> },
+  { path: "/contact", element: <Contact></Contact> },
+  { path: "/checkout/:name/:active/:usage/:dosage", element: <Checkout></Checkout> },
+  { path: "/checkout/payment", element: <Payment></Payment> },
+]);
 
 function App() {
   return (
-    <div className="bg-offwhite vh-100">
-      <nav className="bg-dark">Navbar</nav>
-      <Chat></Chat>
-    </div>
+    <RouterProvider router={router}></RouterProvider>
   );
 }
 

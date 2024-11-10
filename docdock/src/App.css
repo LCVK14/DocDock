@@ -1,30 +1,69 @@
 .text-green {
-  color: #35524A; /* custom color */
+  color: #35524A;
+  /* custom color */
 }
+
 .text-purple {
-  color: #5E239D; /* custom color */
+  color: #5E239D;
+  /* custom color */
 }
+
 .text-blue {
-  color: #34E4EA; /* custom color */
+  color: #34E4EA;
+  /* custom color */
 }
+
 .text-light_purple {
-  color: #918EF4; /* custom color */
+  color: #918EF4;
+  /* custom color */
 }
+
 .text-offwhite {
-  color: #F4F4ED; /* custom color */
+  color: #F4F4ED;
+  /* custom color */
 }
+
 .bg-green {
-  background-color: #35524A; /* custom color */
+  background-color: #35524A;
+  /* custom color */
 }
+
 .bg-purple {
-  background-color: #5E239D; /* custom color */
+  background-color: #5E239D;
+  /* custom color */
 }
+
 .bg-blue {
-  background-color: #34E4EA; /* custom color */
+  background-color: #34E4EA;
+  /* custom color */
 }
+
 .bg-light_purple {
-  background-color: #918EF4; /* custom color */
+  background-color: #679688ad;
+  /* custom color */
 }
+
 .bg-offwhite {
-  background-color: #F4F4ED; /* custom color */
+  background-color: #F4F4ED;
+  /* custom color */
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+.nav-link {
+  color: #35524A;
+}
+
+.nav-link:hover {
+  color: #918EF4;
+}
+
+.btn-purple {
+  background-color: #35524A;
+}
+
+.btn-purple:hover {
+  background-color: #467366;
 }
