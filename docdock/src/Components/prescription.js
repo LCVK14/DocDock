@@ -1,6 +1,7 @@
 import Card from "./Card";
 import Navbar from "./Navbar";
 
+
 const Prescription = () => {
   return (
     <div className="bg-offwhite">

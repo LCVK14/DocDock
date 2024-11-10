@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer class="py-3 my-4 bg-offwhite">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <footer class="py-3 my-0 bg-offwhite">
+      <ul class="nav justify-content-center border-bottom pb-3 my-0">
         <li class="nav-item">
           <a href="#" class="nav-link px-2 text-body-secondary">
             Home
