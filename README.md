@@ -23,3 +23,4 @@ Look at the bottom of this file to find out how to run our Pi generator
 - Open cmd in the `useless_hack` folder and run `npm install`
 - Run `npm run start`
 - If a browser tab doesn't open, then ctrl + click the URL that shows up
+- When the website load, Keep pressing the button and learn the values of Pi
