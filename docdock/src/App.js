@@ -1,14 +1,16 @@
-import "./App.css";
-import Chat from "./Components/chat";
+import './App.css';
+import Navbar from './Components/Navbar';
+import Const from './Components/Const';
+import Hero from './Components/Hero';
+import Home from './Components/Home';
 
-import Prescription from "./Components/prescription";
 
 function App() {
   return (
-    <div className="bg-offwhite vh-100">
-      <nav className="bg-dark">Navbar</nav>
-      <Chat></Chat>
+    <div>
+      <Home></Home>
     </div>
+
   );
 }
 
