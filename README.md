@@ -1,3 +1,5 @@
+<div align="center"><img src="https://attic.sh/vftg4nf4jbxgr35osmlbi6rh1ntx" alt="A picture of a doctor" width="200"/></div>
+
 # DocDock
 DockDock is an online medical consultation platform that leverages medically trained AI to diagnose mild conditions and refer more critical conditions to doctors who connect with users in remote locations through text or video calls.
 It also allows the users to order over-the-counter and prescription medication (prescribed by the doctors on the site) and have it delivered to their house.  
