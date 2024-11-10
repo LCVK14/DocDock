@@ -1,4 +1,16 @@
 {
+<<<<<<< Updated upstream
+=======
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "app.js",
+  "scripts": {
+    "devstart": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+>>>>>>> Stashed changes
   "dependencies": {
     "bootstrap": "^5.3.3"
   }

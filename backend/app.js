@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 const { OpenAI } = require("openai");
 require("dotenv").config();
 const express = require('express');
@@ -127,3 +128,60 @@ async function test(params) {
     });
     return completion.choices[0].message;
 }
+=======
+require('dotenv').config();
+const express = require('express');
+const axios = require('axios');
+const cors = require('cors');
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+// POST endpoint for AI chat
+app.post('/api/chat', async (req, res) => {
+  const { message } = req.body;
+
+  if (!message) {
+    return res.status(400).json({ error: 'Message is required' });
+  }
+
+  try {
+    const response = await axios.post(
+      'https://api.openai.com/v1/chat/completions',
+      {
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: message }],
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+        },
+      }
+    );
+
+    const aiResponse = response.data.choices[0].message.content;
+    res.json({ response: aiResponse });
+  } catch (error) {
+    console.error('Error communicating with OpenAI:', error);
+    res.status(500).json({ error: 'Failed to communicate with the Doctor AI' });
+  }
+});
+
+// Simple GET endpoint to check server status
+app.get('/', (req, res) => {
+  res.send("Server is running!");
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'Test endpoint is working!' });
+  });
+>>>>>>> Stashed changes
