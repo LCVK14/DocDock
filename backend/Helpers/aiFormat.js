@@ -3,6 +3,7 @@ const format=function(text){
     // console.log("works1");
     // console.log(regex);
     let ret={};
+    console.log(text);
     
     let k=1;
     
@@ -10,7 +11,7 @@ const format=function(text){
     // noformat=noformat.replaceAll('\n','');
     noformat=noformat.replaceAll('-','');
     let i=noformat.toUpperCase().search("NAME");
-    console.log(i);
+    // console.log(i);
 
     while(i!=-1){
         
