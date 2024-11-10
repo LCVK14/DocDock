@@ -10,13 +10,8 @@ const Hero = () => {
           online. Experience convenient, secure, and reliable virtual
           consultations whenever you need them.
         </p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <button
-            type="button"
-            class="btn btn-purple text-white btn-lg px-4 me-md-2 fw-bold"
-          >
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3 fs-4 lead">
             Get Started Today!
-          </button>
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 py-2 overflow-hidden ">

@@ -40,7 +40,7 @@ const Chat = () => {
   }
 
   async function sendUserMessage(params) {
-    if (params != "") {
+    if (params !== "") {
       try {
         setMessage_history((prev_messages) => [
           ...prev_messages,
