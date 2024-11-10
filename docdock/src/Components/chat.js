@@ -10,17 +10,33 @@ const Chat = () => {
   const [user_input, setUser_input] = useState("");
   const [message_history, setMessage_history] = useState([
     <AIChatBubble
-      message={"Hello, user! How are you feeling today?"}
+      message={"Hello, user! Please state the symptoms you are experiencing?"}
     ></AIChatBubble>,
   ]);
 
   function sendAIMessage(params) {
     console.log(params)
+
+    if (params.disease) {
+    const diseaseInfo = params.disease;
     setMessage_history((prev_messages) => [
       ...prev_messages,
-      <AIChatBubble message={"Here are some possible conditions you may be facing " + params[1]['Name'].slice(2)+", "+params[3]['Name'].slice(2)+", "+params[5]['Name'].slice(2)}></AIChatBubble>,
-    <AIChatBubble message={"And these are a few recommended remedies "+ params[1]['Remidie']+" "+params[5]['Remidie']+" "+params[3]['Remidie']}></AIChatBubble>
+      <AIChatBubble message={"Here are some possible conditions you may be facing " + diseaseInfo[1]['Name'].slice(2)+", "+diseaseInfo [3]['Name'].slice(2)+", "+diseaseInfo [5]['Name'].slice(2)}></AIChatBubble>,
+    <AIChatBubble message={"And these are a few recommended remedies "+ diseaseInfo [1]['Remidie']+" "+diseaseInfo [5]['Remidie']+" "+diseaseInfo [3]['Remidie']}></AIChatBubble>
     ]);
+  }
+
+    if(params.doctor) {
+      setMessage_history((prev_messages) => [
+        ...prev_messages,
+        <AIChatBubble 
+        message={
+          `Your symptoms seem to be more severe than others, I recomment you consult with Dr. ${params.doctor.name}, ` +
+          `a ${params.doctor.specialty}. You can find them at ${params.doctor.address}, and their contact number is ${params.doctor.phone}.`
+        }
+      ></AIChatBubble>
+      ]);
+    }
   }
 
   async function sendUserMessage(params) {
@@ -38,7 +54,7 @@ const Chat = () => {
           body: JSON.stringify({ prompt: params }),
         })
         const data = await res.json()
-        sendAIMessage(data.disease)
+        sendAIMessage(data)
         user_input = ""
 
       } catch (error) {}

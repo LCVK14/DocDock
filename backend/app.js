@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 const { OpenAI } = require("openai");
 require("dotenv").config();
 const express = require('express');
@@ -19,6 +18,54 @@ const introPrompt = "Hello, You are Dr.Amazing, the world's best doctor. " +
     "I am one of your patients and suffering an unknown disease, infection, sickness, ailments and anything like. " +
     "I will be listing off the symptoms that I am suffering with and are tasked in identifying the potential disease, infection, sickness, ailments and anything like I might be suffering from and state potential remedies. " +
     "Please format your response in a numerical list, for example (1.name:’disease1’, remedies:‘remedies1’, name:’disease2’, remedies:‘remedies2’). The symptoms I am suffering from ";
+
+    const doctorInfoList = [
+        {
+            name: "Dr. Sarah Lee",
+            specialty: "Pulmonologist",
+            symptoms: ["cough blood", "coughing blood", "blood coughing", "shortness of breath"],
+            address: "123 Main St, Springfield",
+            phone: "(123) 456-7890"
+        },
+        {
+            name: "Dr. Maria Gonzales",
+            specialty: "Cardiologist",
+            symptoms: ["uneven heart beat", "fast heart beat", "shortness of breath", "palpitations"],
+            address: "789 Maple Dr, Springfield",
+            phone: "(123) 555-0234"
+        },
+        {
+            name: "Dr. David Chen",
+            specialty: "Neurologist",
+            symptoms: ["seizures"],
+            address: "321 Willow Rd, Springfield",
+            phone: "(123) 555-0456"
+        },
+        {
+            name: "Dr. Emily White",
+            specialty: "Gastroenterologist",
+            symptoms: ["abdominal pain", "nausea", "vomiting"],
+            address: "654 Pine St, Springfield",
+            phone: "(123) 555-0678"
+        }
+    ];
+    
+// Keywords that trigger the doctor recommendation
+const triggerKeywords = ["cough", "fever", "chest pain", "shortness of breath"];
+
+//Helper Function
+function checkForKeywords(input) {
+    return triggerKeywords.some(keyword => input.toLowerCase().includes(keyword));
+}
+
+//Helpter Function
+function findRecommendedDoctor(input) {
+    const inputSymptoms = input.toLowerCase();
+    return doctorInfoList.find(doctor =>
+        doctor.symptoms.some(symptom => inputSymptoms.includes(symptom))
+    );
+}
+
 
 app.get('/test', (req, res) => {
     try {
@@ -65,50 +112,54 @@ app.get('/test', (req, res) => {
 
 app.post('/', async (req, res) => {
     // console.log(req.body.hello);
-
     console.log(req.body.prompt);
-    if (req.body.prompt) {
+    const{ prompt } = req.body;
+    
+    if(!req.body.prompt){
+        return res.send("The prompt must not be empty");
+    }
         let fullPrompt = introPrompt + req.body.prompt
         // console.log(fullPrompt);
-        var testvar;
+        let responseContent;
+        let ret = {};
+
         try {
-            testvar = await test(fullPrompt);
+            const response = await test(fullPrompt);
+            responseContent = response.content;
             // testvar = "I'm here to help! Please provide the list of symptoms you are experiencing, and I'll do my best to identify potential diseases or conditions along with remedies.";
-            console.log(testvar);
-
-
+            console.log(responseContent);
         } catch (error) {
             console.log("something went wrong");
             console.log(error);
         }
+
         // console.log(formatAI(testvar.content));
-        let ret = {};
-        ret.disease = formatAI(testvar.content+"*");
+        ret.disease = formatAI(responseContent+"*");
         // ret.disease = formatAI(testvar+"*");
         console.log(ret.disease);
+
+        const recommendedDoctor = findRecommendedDoctor(req.body.prompt)
+
+        if(recommendedDoctor){
+            console.log("Keyword found! Adding Doctor Information")
+            ret.doctor = recommendedDoctor;
+        } else {
+            console.log("No trigger word found");
+        }
+
         if (Object.keys(ret.disease).length === 0) {
             console.log("try again\n");
-            testvar = await test(fullPrompt);
+            const testvar = await test(fullPrompt);
+            ret.disease = formatAI(testvar+"*");
 
-            ret.disease = formatAI(testvar.content+"*");
             if (Object.keys(ret.disease).length === 0) {
-                res.send({"error":"Sorry but I don't understand your symptoms, can you re-write your prompt to be more clearer."});
-            }
-            else {
-                res.send(ret);
-
+                return res.send({"error":"Sorry but I don't understand your symptoms, can you re-write your prompt to be more clearer."});
             }
         }
-        else {
-            res.send(ret);
-        }
 
-
-    } else {
-        res.send("The prompt must not be empty");
+        res.send(ret);
     }
-
-})
+)
 app.get("/use/:index",(req,res)=>{
     res.send({"num":useless(req.params.index)});
 })
@@ -128,60 +179,3 @@ async function test(params) {
     });
     return completion.choices[0].message;
 }
-=======
-require('dotenv').config();
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-// POST endpoint for AI chat
-app.post('/api/chat', async (req, res) => {
-  const { message } = req.body;
-
-  if (!message) {
-    return res.status(400).json({ error: 'Message is required' });
-  }
-
-  try {
-    const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
-      {
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: message }],
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
-        },
-      }
-    );
-
-    const aiResponse = response.data.choices[0].message.content;
-    res.json({ response: aiResponse });
-  } catch (error) {
-    console.error('Error communicating with OpenAI:', error);
-    res.status(500).json({ error: 'Failed to communicate with the Doctor AI' });
-  }
-});
-
-// Simple GET endpoint to check server status
-app.get('/', (req, res) => {
-  res.send("Server is running!");
-});
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-app.get('/api/test', (req, res) => {
-    res.json({ message: 'Test endpoint is working!' });
-  });
->>>>>>> Stashed changes
