@@ -2,14 +2,13 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Const from './Components/Const';
 import Hero from './Components/Hero';
+import Home from './Components/Home';
 
 
 function App() {
   return (
     <div>
-      <Navbar></Navbar>
-      <Const></Const>
-      <Hero></Hero>
+      <Home></Home>
     </div>
 
   );
