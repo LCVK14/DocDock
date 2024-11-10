@@ -1,9 +1,10 @@
 <div align="center"><img src="https://attic.sh/vftg4nf4jbxgr35osmlbi6rh1ntx" alt="A picture of a doctor" width="200"/></div>
 
-# DocDock
+# DocDock (and our submission for the most useless hack!!)
 DockDock is an online medical consultation platform that leverages medically trained AI to diagnose mild conditions and refer more critical conditions to doctors who connect with users in remote locations through text or video calls.
 It also allows the users to order over-the-counter and prescription medication (prescribed by the doctors on the site) and have it delivered to their house.  
-BOTH the AI and the ReactJS must be set up for full functionality.
+BOTH the AI and the ReactJS must be set up for full functionality.  
+Look at the bottom of this file to find out how to run our Pi generator
 
 ## How to set up the AI 
 - Clone or download the git repository
@@ -15,5 +16,10 @@ BOTH the AI and the ReactJS must be set up for full functionality.
 ## How to set up the ReactJS
 - Go into the `docdock` folder
 - Open cmd in the `docdock` folder and run `npm install`
+- Run `npm run start`
+- If a browser tab doesn't open, then ctrl + click the URL that shows up
+## How to set up the most useless hack
+- Go into the `useless_hack` folder (while the AI is running...)
+- Open cmd in the `useless_hack` folder and run `npm install`
 - Run `npm run start`
 - If a browser tab doesn't open, then ctrl + click the URL that shows up
