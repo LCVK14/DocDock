@@ -1,8 +1,10 @@
 import Card from "./Card";
+import Navbar from "./Navbar";
 
 const Prescription = () => {
   return (
-    <>
+    <div className="bg-offwhite">
+      <Navbar></Navbar>
       <h2 className="text-center display-6">Medication</h2>
       <div className="bg-offwhite mx-5 py-2">
         <Card
@@ -45,7 +47,7 @@ const Prescription = () => {
           }}
         ></Card>
       </div>
-    </>
+    </div>
   );
 };
 

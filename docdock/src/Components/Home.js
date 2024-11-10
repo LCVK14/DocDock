@@ -1,14 +1,14 @@
 import Navbar from './Navbar';
-import Const from './Const';
-import Hero from './Hero';
+import Hero from './Hero'
+import Features from './Features';
 
 
 function Home() {
   return (
     <div className='bg-offwhite'>
       <Navbar></Navbar>
-      <Const></Const>
       <Hero></Hero>
+      <Features></Features>
     </div>
 
   );

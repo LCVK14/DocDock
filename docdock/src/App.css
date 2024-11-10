@@ -39,7 +39,7 @@
 }
 
 .bg-light_purple {
-  background-color: #918EF4;
+  background-color: #679688ad;
   /* custom color */
 }
 
@@ -53,7 +53,7 @@ a:visited,
 a:hover,
 a:active,
 .nav-link {
-  color: #5E239D;
+  color: #35524A;
 }
 
 .nav-link:hover {
@@ -61,9 +61,9 @@ a:active,
 }
 
 .btn-purple {
-  background-color: #5E239D;
+  background-color: #35524A;
 }
 
 .btn-purple:hover {
-  background-color: #918EF4;
+  background-color: #467366;
 }

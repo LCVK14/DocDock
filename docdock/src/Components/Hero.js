@@ -1,49 +1,34 @@
 const Hero = () => {
-    return (
-        <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-            <div class="list-group w-75">
-                <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <img src="https://global.discourse-cdn.com/brave/optimized/3X/3/9/39db17a092c56703fb99fb2d8767fc96a461d199_2_689x408.jpeg" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0" />
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                        <div>
-                            <h3 class="mb-0">Frequently Asked Questions (FAQs) </h3>
-                        </div>
-
-                    </div>
-                </a>
-                <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <img src="https://p7.hiclipart.com/preview/423/730/456/logo-four-diamonds-fund-symbol-form-w-4-bullet-vector.jpg" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0" />
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                        <div>
-                            <h6 class="mb-0">What is DocDock? </h6>
-                            <p class="mb-0 opacity-75">It is an online service that helps villagers get the right medications using advanced AI technology. It helps understand your symptoms and suggests the best medications.</p>
-                        </div>
-
-                    </div>
-                </a>
-                <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <img src="https://p7.hiclipart.com/preview/423/730/456/logo-four-diamonds-fund-symbol-form-w-4-bullet-vector.jpg" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0" />
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                        <div>
-                            <h6 class="mb-0">How does the AI prescription process work?</h6>
-                            <p class="mb-0 opacity-75">You tell the AI about your symptoms and medical history. The AI then analyzes this information and suggests the best medications for you. </p>
-                        </div>
-
-                    </div>
-                </a>
-                <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <img src="https://p7.hiclipart.com/preview/423/730/456/logo-four-diamonds-fund-symbol-form-w-4-bullet-vector.jpg" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0" />
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                        <div>
-                            <h6 class="mb-0">What should I do if I have trouble using the website?</h6>
-                            <p class="mb-0 opacity-75">If you have any problems,6 contact our support team. We are here to help you at any time.</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
+  return (
+    <div class="row p-0 pb-0 align-items-center border shadow-sm w-100 m-0 bg-light_purple">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-semibold lh-1 text-green pb-2">
+          Good Health is a Click Away
+        </h1>
+        <p class="lead fw-normal text-secondary-emphasis pb-2">
+          Docdock makes it easy to connect with trusted healthcare professionals
+          online. Experience convenient, secure, and reliable virtual
+          consultations whenever you need them.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <button
+            type="button"
+            class="btn btn-purple text-white btn-lg px-4 me-md-2 fw-bold"
+          >
+            Get Started Today!
+          </button>
         </div>
-    );
-}
+      </div>
+      <div class="col-lg-4 offset-lg-1 py-2 overflow-hidden ">
+        <img
+          class="rounded-lg-3"
+          src="https://attic.sh/vftg4nf4jbxgr35osmlbi6rh1ntx"
+          alt=""
+          width="500"
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Hero;
