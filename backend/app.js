@@ -74,7 +74,9 @@ app.post('/', async (req, res) => {
             console.log(error);
         }
         // console.log(formatAI(testvar.content));
-        res.send(formatAI(testvar.content));
+        let ret={};
+        ret.disease=formatAI(testvar.content);
+        res.send(ret);
         // res.send(send);
     } else {
         res.send("The prompt must not be empty");
