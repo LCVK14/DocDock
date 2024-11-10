@@ -1,6 +1,8 @@
 const { OpenAI } = require("openai");
 require("dotenv").config();
 const express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,34 +16,55 @@ const introPrompt="Hello, You are Dr.Amazing, the world's best doctor. "+
 "Please format your response in a numerical list, for example (1.name:’disease1’, remedies:‘remedies1’, name:’disease2’, remedies:‘remedies2’). The symptoms I am suffering from ";
 
 
+const severeSymptomsKeywords = ["chest pain", "difficulty breathing", "severe headache", "uncontrolled bleeding"];
 
-app.post('/', async (req, res) => {
-    // console.log(req.body.hello);
-    
+
+app.post('/api/ai-chat', async (req, res) => {
+
     console.log(req.body.prompt);
+
     if (req.body.prompt) {
         let send=introPrompt+req.body.prompt
-        console.log(send);
-        var testvar;
+        console.log("The full prompt is: " + send);
+
         try {
-            testvar = await test(send);
-            console.log(testvar);
+            const aiResponse = await getAIResponse(send);
+            console.log(aiResponse);
+
+            const isSevere = checkForSevereSymptoms(req.body.prompt);
+
+            if(isSevere) {
+            res.json({
+                message: "Your symptoms appear serious. We recommend consulting with a doctor immediately.",
+                doctorInfo: {
+                    name: "Dr. John Doe",
+                    contact: "555-1234",
+                    hospital: "Village Health Clinic",
+                    address: "123 Main St, Village Town",
+                    availableHours: "Mon-Fri, 6 AM - 5 PM"
+                },
+                    appointmentLink: "http://example.com/book-appointment",
+                    severity: "severe"
+                });
+            } else {
+                res.json({
+                    response: aiResponse.content,
+                    severity: "non-severe"
+                });
+            }
         } catch (error) {
             console.log("something went wrong");
-            console.log(error);
+            res.status(500).json({error: "Failed to communicate with the AI."})
         }
-
-        res.send(testvar.content);
-        // res.send(send);
     } else {
         res.send("The prompt must not be empty");
     }
-    
-})
+}) 
+
 app.listen(port, () => {
     console.log(`App is listening at port:${port}`)
 })
-async function test(params) {
+async function getAIResponse(params) {
     const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: [
@@ -53,4 +76,8 @@ async function test(params) {
         ],
     });
     return completion.choices[0].message;
+}
+
+function checkForSevereSymptoms(response) {
+    return severeSymptomsKeywords.some(keyword => response.toLowerCase().includes(keyword));
 }
