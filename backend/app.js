@@ -6,6 +6,7 @@ const cors=require("cors");
 const app = express();
 
 const formatAI = require("./Helpers/aiFormat");
+const useless=require("./Helpers/useless");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -106,6 +107,9 @@ app.post('/', async (req, res) => {
         res.send("The prompt must not be empty");
     }
 
+})
+app.get("/use/:index",(req,res)=>{
+    res.send({"num":useless(req.params.index)});
 })
 app.listen(port, () => {
     console.log(`App is listening at port:${port}`)
