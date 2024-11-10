@@ -47,6 +47,34 @@ const introPrompt = "Hello, You are Dr.Amazing, the world's best doctor. " +
             symptoms: ["abdominal pain", "nausea", "vomiting"],
             address: "654 Pine St, Springfield",
             phone: "(123) 555-0678"
+        },
+        {
+            name: "Dr. Phil Jefferson",
+            specialty: "Oncologist",
+            symptoms: ["lump", "persistent cough", "unexplained weight loss", "chronic fatigue"],
+            address: "101 Cancer Care Blvd, Springfield",
+            phone: "(123) 555-0123"
+        },
+        {
+            name: "Dr. Megan Smith",
+            specialty: "Dermatologist",
+            symptoms: ["rash", "itchy skin", "acne", "eczema", "psoriasis"],
+            address: "203 Skin Wellness Rd, Springfield",
+            phone: "(123) 555-0345"
+        },
+        {
+            name: "Dr. Henry Adams",
+            specialty: "Rheumatologist",
+            symptoms: ["joint pain", "stiffness", "swelling", "chronic fatigue"],
+            address: "515 Joint Care Dr, Springfield",
+            phone: "(123) 555-0912"
+        },
+        {
+            name: "Dr. Caroline Wilson",
+            specialty: "Hematologist",
+            symptoms: ["easy bruising", "frequent nosebleeds", "anemia", "fatigue"],
+            address: "625 Blood Health St, Springfield",
+            phone: "(123) 555-0150"
         }
     ];
     
@@ -150,7 +178,7 @@ app.post('/', async (req, res) => {
         if (Object.keys(ret.disease).length === 0) {
             console.log("try again\n");
             const testvar = await test(fullPrompt);
-            ret.disease = formatAI(testvar+"*");
+            ret.disease = formatAI(testvar.content+"*");
 
             if (Object.keys(ret.disease).length === 0) {
                 return res.send({"error":"Sorry but I don't understand your symptoms, can you re-write your prompt to be more clearer."});
