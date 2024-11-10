@@ -6,7 +6,7 @@ It also allows the users to order over-the-counter and prescription medication (
 BOTH the AI and the ReactJS must be set up for full functionality.  
 Look at the bottom of this file to find out how to run our Pi generator
 
-## How to set up the AI 
+## How to set up the AI (Back-end)
 - Clone or download the git repository
 - Go into the `backend` folder
 - Open cmd in the `backend` folder and run `echo. > .env`
@@ -19,7 +19,7 @@ Look at the bottom of this file to find out how to run our Pi generator
 - Run `npm run start`
 - If a browser tab doesn't open, then ctrl + click the URL that shows up
 ## How to set up the most useless hack
-- Go into the `useless_hack` folder (while the AI is running...)
+- Go into the `useless_hack` folder (AI(Back-End) must be running...)
 - Open cmd in the `useless_hack` folder and run `npm install`
 - Run `npm run start`
 - If a browser tab doesn't open, then ctrl + click the URL that shows up
